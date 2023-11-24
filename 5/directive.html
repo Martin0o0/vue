@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <a v-if="flag">doit</a>
+    <ul>
+        <li v-for="system in systems">{{system}}</li>
+    </ul>
+    <p v-show="flag">doit</p>
+    <h5 v-bind:id="uid">vue hello</h5>
+    <button v-on:click="popupAlert">warn</button>
+    <button v-on:click="clickBtn(10)">click</button>
+</div>
+<script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            flag: true,
+            systems: ['android', 'ios', 'window'],
+            uid: 10
+        },
+        methods:{
+            popupAlert: function (event){
+                console.log(event)
+                return alert('warn');
+            },
+            clickBtn: function(num){
+                alert('click' + num + 'times');
+            }
+
+        }
+    });
+
+</script>
+</body>
+</html>

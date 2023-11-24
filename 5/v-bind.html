@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="idA">id bind</p>
+        <p v-bind:class="classA">class bind</p>
+        <p v-bind:style="styleA">style bind</p>
+        <p>{{message}}</p>
+        <p>{{message + "!!!"}}</p>
+        <p>{{ message.split("").reverse().join('')}}</p> <!-- 추천되지 않음-->
+      <p>{{reversedMessage}}</p> <!--  Computed 속성-->
+        <p>{{reversedMessageMethod}}</p> <!-- method 속성 -->
+        <button v-on:click="reversedMethod">reverse method</button>
+        <input v-model="inputmsg">
+    </div>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data : {
+            idA: 10,
+            classA :'container',
+            styleA : 'color: blue',
+            message: "hellow js",
+            reversedMessageMethod : "message vue",
+            inputmsg: "hello"
+        },
+        methods:{
+            reversedMethod: function(){
+                this.reversedMessageMethod = this.reversedMessageMethod.split('').reverse().join('');
+                return this.reversedMessageMethod;
+            }
+        },
+        computed:{
+            reversedMessage: function(){
+                return this.message.split('').reverse().join('');
+            }
+        },
+        watch:{
+            inputmsg:function(data){
+                console.log("message : ", data);
+            }
+        }
+    });
+</script>
+</body>
+</html>
